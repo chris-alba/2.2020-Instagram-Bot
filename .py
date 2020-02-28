@@ -27,15 +27,17 @@ class InstagramBot:
         self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div[3]/button[2]').click()
 
     def nav_user(self, user):
-
+        #takes you to the Instagram account's page
         self.driver.get('{}/{}/'.format(self.base_url, user))
         sleep(2)
 
     def see_followers(self):
+        #takes you to the Instagram account's following list
         self.driver.find_element_by_xpath('/html/body/div[1]/section/main/div/header/section/ul/li[2]/a').click()
         sleep(1)
 
     def actively_follow(self):
+        #begins the follow and scroll process
         follow = self.driver.find_elements_by_class_name('sqdOP')
         for x in follow:
             x.click()
