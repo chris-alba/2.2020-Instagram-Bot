@@ -70,8 +70,8 @@ class InstagramBot:
 
 
 if __name__ == '__main__':
-    ig_bot = InstagramBot ('snapdragon_in_flux', 'F@lcon2060')
-    ig_bot.nav_user('kendalljenner')
+    ig_bot = InstagramBot ('YOUR_USERNAME', 'YOUR_PASSWORD')
+    ig_bot.nav_user('THE_ACCOUNT_USERNAME')
     ig_bot.see_followers()
     ig_bot.actively_follow()
     ig_bot.scroll()
