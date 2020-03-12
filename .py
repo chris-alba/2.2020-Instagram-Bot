@@ -6,6 +6,7 @@ from multiprocessing import Process
 import sys
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
+from multiprocessing import Process
 
 
 class InstagramBot:
@@ -27,36 +28,38 @@ class InstagramBot:
         self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div[3]/button[2]').click()
 
     def nav_user(self, user):
-        #takes you to the Instagram account's page
+
         self.driver.get('{}/{}/'.format(self.base_url, user))
         sleep(2)
 
     def see_followers(self):
-        #takes you to the Instagram account's following list
         self.driver.find_element_by_xpath('/html/body/div[1]/section/main/div/header/section/ul/li[2]/a').click()
         sleep(1)
 
     def actively_follow(self):
-        #begins the follow and scroll process
         follow = self.driver.find_elements_by_class_name('sqdOP')
         for x in follow:
             x.click()
             sleep(2)
 
-        screen = self.driver.find_element_by_xpath('/html/body/div[4]/div/div[2]')
-        self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", screen)
+    def scroll(self):
 
-        follow = self.driver.find_elements_by_class_name('sqdOP')
-        for x in follow:
-            x.click()
-            sleep(2)
+        scroll_pause_time = 5
+
+        while True:
+            screen = self.driver.find_element_by_xpath('/html/body/div[4]/div/div[2]')
+            #THIS IS ORIGINAL: self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", screen)
+            self.driver.execute_script("arguments[0].scrollBy(0, 100)", screen)
+    
+            sleep(scroll_pause_time)
+        
 
 
-
-
-     
-   
-
+    if __name__ == '__main__':
+        p1 = Process(target=actively_follow)
+        p1.start()
+        p2=Process(target=scroll)
+        p2.start()
 
 
 
@@ -67,7 +70,8 @@ class InstagramBot:
 
 
 if __name__ == '__main__':
-    ig_bot = InstagramBot ('YOUR_USERNAME', 'YOUR_PASSWORD')
-    ig_bot.nav_user('THE_INSTAGRAM_ACCOUNT')
+    ig_bot = InstagramBot ('snapdragon_in_flux', 'F@lcon2060')
+    ig_bot.nav_user('kendalljenner')
     ig_bot.see_followers()
     ig_bot.actively_follow()
+    ig_bot.scroll()
