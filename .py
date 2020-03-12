@@ -28,27 +28,28 @@ class InstagramBot:
         self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div[3]/button[2]').click()
 
     def nav_user(self, user):
-
+        #Takes you to the page of THE_ACCOUNT
         self.driver.get('{}/{}/'.format(self.base_url, user))
         sleep(2)
 
     def see_followers(self):
+        #Takes to the followers div of THE_ACCOUNT
         self.driver.find_element_by_xpath('/html/body/div[1]/section/main/div/header/section/ul/li[2]/a').click()
         sleep(1)
 
     def actively_follow(self):
+        #Begins to follow all accounts
         follow = self.driver.find_elements_by_class_name('sqdOP')
         for x in follow:
             x.click()
             sleep(2)
 
     def scroll(self):
-
+        
         scroll_pause_time = 5
 
         while True:
             screen = self.driver.find_element_by_xpath('/html/body/div[4]/div/div[2]')
-            #THIS IS ORIGINAL: self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", screen)
             self.driver.execute_script("arguments[0].scrollBy(0, 100)", screen)
     
             sleep(scroll_pause_time)
@@ -56,6 +57,7 @@ class InstagramBot:
 
 
     if __name__ == '__main__':
+        #Simultaneous scroll and click
         p1 = Process(target=actively_follow)
         p1.start()
         p2=Process(target=scroll)
