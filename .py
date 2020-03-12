@@ -33,7 +33,7 @@ class InstagramBot:
         sleep(2)
 
     def see_followers(self):
-        #Takes to the followers div of THE_ACCOUNT
+        #Takes you to the followers div of THE_ACCOUNT
         self.driver.find_element_by_xpath('/html/body/div[1]/section/main/div/header/section/ul/li[2]/a').click()
         sleep(1)
 
