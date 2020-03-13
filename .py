@@ -6,7 +6,7 @@ from multiprocessing import Process
 import sys
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
-from multiprocessing import Process
+
 
 
 class InstagramBot:
