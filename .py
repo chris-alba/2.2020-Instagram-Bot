@@ -43,7 +43,7 @@ class InstagramBot:
 
 if __name__ == '__main__':
 
-    ig_bot = InstagramBot ('YOUR USERNAME', 'YOUR_PASSWORD')
+    ig_bot = InstagramBot ('YOUR USERNAME', 'YOUR PASSWORD')
     ig_bot.nav_user('USERNAME OF ACCOUNT') 
     ig_bot.see_followers()
     ig_bot.actively_follow()
