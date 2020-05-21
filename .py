@@ -4,7 +4,6 @@ import time
 from time import sleep
 import sys
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
 
 
 class InstagramBot:
