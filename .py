@@ -36,9 +36,9 @@ class InstagramBot:
 
     def actively_follow(self):
         follow = self.driver.find_elements_by_class_name('sqdOP')
-        for x in follow:
+        for x in follow[:11]:
             x.click()
-            sleep(8)
+            sleep(9)
     
 
 if __name__ == '__main__':
