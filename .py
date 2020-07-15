@@ -22,7 +22,9 @@ class InstagramBot:
         sleep(4)
         self.driver.find_element_by_xpath('/html/body/div[1]/section/main/div/article/div/div[1]/div/form/div[4]/button/div').click()
         sleep(4)
-        self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div[3]/button[2]').click()
+        self.driver.find_element_by_xpath('/html/body/div[1]/section/main/div/div/div/div/button').click()
+        sleep(4)
+        self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div/div[3]/button[2]').click()
 
     def nav_user(self, user):
 
@@ -31,18 +33,17 @@ class InstagramBot:
 
     def see_followers(self):
         self.driver.find_element_by_xpath('/html/body/div[1]/section/main/div/header/section/ul/li[2]/a').click()
-        sleep(4)
+        sleep(6)
 
     def actively_follow(self):
-        follow = self.driver.find_elements_by_class_name('sqdOP')
+        follow = self.driver.find_elements_by_xpath('//button[contains(text(),"Follow")]')
         for x in follow[:11]:
             x.click()
             sleep(9)
     
 
 if __name__ == '__main__':
-
     ig_bot = InstagramBot ('YOUR USERNAME', 'YOUR PASSWORD')
-    ig_bot.nav_user('USERNAME OF ACCOUNT') 
+    ig_bot.nav_user('ACCOUNT USERNAME') 
     ig_bot.see_followers()
     ig_bot.actively_follow()
