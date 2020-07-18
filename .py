@@ -36,7 +36,7 @@ class InstagramBot:
         sleep(6)
 
     def actively_follow(self):
-        follow = self.driver.find_elements_by_xpath('//button[contains(text(),"Follow")]')
+        follow = self.driver.find_elements_by_class_name('sqdOP')
         for x in follow[:11]:
             x.click()
             sleep(9)
